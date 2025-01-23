@@ -1,12 +1,11 @@
 <template>
-  <Home />
+  <router-view></router-view>
 </template>
 
 <script setup lang="ts">
-import Home from './components/Home.vue'
 </script>
 
-<style scoped>
+<style>
 .logo {
   height: 6em;
   padding: 1.5em;

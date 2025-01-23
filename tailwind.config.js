@@ -10,17 +10,17 @@ export default {
     extend: {
       colors: {
         'academic': {
-          'primary': '#2C3E50',    // 深蓝色，适合标题
-          'secondary': '#34495E',   // 次要深蓝色
-          'accent': '#3498DB',      // 强调蓝色
-          'light': '#ECF0F1',      // 浅灰色背景
-          'paper': '#FFFFFF',       // 纸张白色
+          'primary': '#000000',    // 黑色文字
+          'secondary': '#86868b',   // 苹果风格的次要灰色
+          'accent': '#0066CC',      // 苹果风格的蓝色
+          'light': '#ffffff',      // 白色背景
+          'paper': '#f5f5f7',      // 苹果风格的浅灰色背景
         }
       },
       fontFamily: {
-        'serif': ['Merriweather', 'Georgia', 'serif'],
-        'sans': ['Inter', 'system-ui', 'sans-serif'],
-        'mono': ['Fira Code', 'monospace'],
+        'serif': ['-apple-system', 'SF Pro Display', 'system-ui', 'sans-serif'],
+        'sans': ['-apple-system', 'SF Pro Text', 'system-ui', 'sans-serif'],
+        'mono': ['SF Mono', 'monospace'],
       },
       typography: {
         DEFAULT: {
@@ -38,22 +38,23 @@ export default {
     function({ addUtilities }) {
       addUtilities({
         '.glass-effect': {
-          'background': 'rgba(255, 255, 255, 0.1)',
-          'backdrop-filter': 'blur(10px)',
-          '-webkit-backdrop-filter': 'blur(10px)'
+          'background': 'rgba(255, 255, 255, 0.8)',
+          'backdrop-filter': 'blur(20px)',
+          '-webkit-backdrop-filter': 'blur(20px)',
+          'border': '1px solid rgba(255, 255, 255, 0.3)'
         },
         '.academic-card': {
-          'background': '#FFFFFF',
-          'border': '1px solid #E2E8F0',
-          'border-radius': '0.5rem',
-          'box-shadow': '0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06)',
+          'background': '#ffffff',
+          'border': '1px solid #e5e5e5',
+          'border-radius': '1rem',
+          'box-shadow': '0 2px 8px rgba(0, 0, 0, 0.05)',
           'padding': '1.5rem',
           'transition': 'all 0.3s ease'
         },
         '.academic-title': {
-          'font-family': 'Merriweather, Georgia, serif',
-          'font-weight': '700',
-          'color': '#2C3E50',
+          'font-family': '-apple-system, SF Pro Display, system-ui, sans-serif',
+          'font-weight': '600',
+          'color': '#000000',
           'line-height': '1.2'
         }
       })
