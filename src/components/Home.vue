@@ -12,10 +12,16 @@
 
     <!-- Language Switcher -->
     <div class="absolute top-4 right-4 z-20">
-      <select v-model="locale" class="bg-white border border-gray-200 rounded-lg px-3 py-1 text-sm">
-        <option value="zh">中文</option>
-        <option value="en">English</option>
-      </select>
+      <div class="language-switcher">
+        <button 
+          v-for="lang in ['zh', 'en']" 
+          :key="lang"
+          @click="locale = lang"
+          :class="['lang-btn', { active: locale === lang }]"
+        >
+          {{ lang === 'zh' ? '中文' : 'English' }}
+        </button>
+      </div>
     </div>
 
     <div class="page-container py-8 relative z-10">
@@ -52,22 +58,22 @@
           <h2 class="academic-title text-2xl mb-4 text-center">{{ t('sections.experience') }}</h2>
           <ul class="space-y-6">
             <li class="experience-item">
-              <div class="time-badge">2023年7月 - 2023年9月</div>
-              <div class="company-name">MetaDigits.AI / 上海未来元数软件开发有限公司</div>
-              <div class="project-name">MathGPTPro 项目</div>
-              <div class="role">AI产品经理（远程）</div>
+              <div class="time-badge">{{ t('experience.metadigits.time') }}</div>
+              <div class="company-name">{{ t('experience.metadigits.company') }}</div>
+              <div class="project-name">{{ t('experience.metadigits.project') }}</div>
+              <div class="role">{{ t('experience.metadigits.role') }}</div>
             </li>
             <li class="experience-item">
-              <div class="time-badge">2024年4月 - 2024年5月</div>
-              <div class="company-name">Imaginix Inc. / 想象力科技有限公司</div>
-              <div class="location">📍 美国加利福尼亚州圣何塞南九街</div>
-              <div class="project-name">kimi.ai / Toonie.AI</div>
-              <div class="role">Prompt工程师（远程）</div>
+              <div class="time-badge">{{ t('experience.imaginix.time') }}</div>
+              <div class="company-name">{{ t('experience.imaginix.company') }}</div>
+              <div class="location">📍 {{ t('experience.imaginix.location') }}</div>
+              <div class="project-name">{{ t('experience.imaginix.project') }}</div>
+              <div class="role">{{ t('experience.imaginix.role') }}</div>
             </li>
             <li class="experience-item">
-              <div class="time-badge">2024年5月13日 - 2024年8月20日</div>
-              <div class="company-name">北京智谱华章（智谱AI）科技有限公司</div>
-              <div class="role">内容编辑实习生</div>
+              <div class="time-badge">{{ t('experience.zhipu.time') }}</div>
+              <div class="company-name">{{ t('experience.zhipu.company') }}</div>
+              <div class="role">{{ t('experience.zhipu.role') }}</div>
             </li>
           </ul>
         </div>
@@ -188,5 +194,32 @@ const { t, locale } = useI18n()
 .avatar-image {
   @apply w-full h-full object-cover rounded-full shadow-lg;
   border: 3px solid rgba(255, 255, 255, 0.8);
+}
+
+/* 语言切换器样式 */
+.language-switcher {
+  @apply flex rounded-xl p-1 bg-white/80 backdrop-blur-sm;
+  box-shadow: 
+    0 2px 5px rgba(0,0,0,0.1),
+    0 0 1px rgba(0,0,0,0.1),
+    inset 0 1px 1px rgba(255,255,255,0.8);
+}
+
+.lang-btn {
+  @apply px-4 py-1.5 rounded-lg text-sm font-medium transition-all duration-300;
+  color: rgba(0,0,0,0.6);
+}
+
+.lang-btn:hover {
+  color: rgba(0,0,0,0.8);
+  background: rgba(0,0,0,0.05);
+}
+
+.lang-btn.active {
+  @apply text-white;
+  background: linear-gradient(180deg, #4F46E5 0%, #7C3AED 100%);
+  box-shadow: 
+    0 2px 4px rgba(0,0,0,0.15),
+    inset 0 1px 1px rgba(255,255,255,0.2);
 }
 </style> 

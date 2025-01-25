@@ -16,6 +16,26 @@ const messages = {
     sections: {
       about: '个人简介',
       experience: '实习经历'
+    },
+    experience: {
+      metadigits: {
+        time: '2023年7月 - 2023年9月',
+        company: '上海未来元数软件开发有限公司',
+        project: 'MathGPTPro 项目',
+        role: 'AI产品经理（远程）'
+      },
+      imaginix: {
+        time: '2024年4月 - 2024年5月',
+        company: '想象力科技有限公司',
+        location: '美国加利福尼亚州圣何塞南九街',
+        project: 'kimi.ai / Toonie.AI',
+        role: 'Prompt工程师（远程）'
+      },
+      zhipu: {
+        time: '2024年5月13日 - 2024年8月20日',
+        company: '北京智谱华章（智谱AI）科技有限公司',
+        role: '内容编辑实习生'
+      }
     }
   },
   en: {
@@ -33,6 +53,26 @@ const messages = {
     sections: {
       about: 'About Me',
       experience: 'Experience'
+    },
+    experience: {
+      metadigits: {
+        time: 'July 2023 - September 2023',
+        company: 'MetaDigits.AI (Shanghai Future Metanumber Software Co., Ltd.)',
+        project: 'MathGPTPro Project',
+        role: 'AI Product Manager (Remote)'
+      },
+      imaginix: {
+        time: 'April 2024 - May 2024',
+        company: 'Imaginix Inc.',
+        location: 'South 9th Street, San Jose, California, USA',
+        project: 'kimi.ai / Toonie.AI',
+        role: 'Prompt Engineer (Remote)'
+      },
+      zhipu: {
+        time: 'May 13, 2024 - August 20, 2024',
+        company: 'Zhipu AI (Beijing)',
+        role: 'Content Editor Intern'
+      }
     }
   }
 }
