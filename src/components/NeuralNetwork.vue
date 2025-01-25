@@ -122,7 +122,9 @@ const animate = () => {
     // 更新连接线的透明度，创建脉冲效果
     connections.forEach((line, index) => {
       const opacity = 0.1 + Math.sin(Date.now() * 0.001 + index * 0.1) * 0.1
-      line.material.opacity = opacity
+      if (line.material instanceof THREE.Material) {
+        line.material.opacity = opacity
+      }
     })
   }
   

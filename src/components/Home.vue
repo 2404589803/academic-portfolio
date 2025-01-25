@@ -10,44 +10,46 @@
     <div class="glow-orb-1"></div>
     <div class="glow-orb-2"></div>
 
+    <!-- Language Switcher -->
+    <div class="absolute top-4 right-4 z-20">
+      <select v-model="locale" class="bg-white border border-gray-200 rounded-lg px-3 py-1 text-sm">
+        <option value="zh">中文</option>
+        <option value="en">English</option>
+      </select>
+    </div>
+
     <div class="page-container py-8 relative z-10">
       <article class="prose prose-lg mx-auto">
         <!-- 个人简介卡片 -->
         <div class="academic-card mb-8 hover:transform hover:scale-102 transition-all duration-300 text-center">
           <div class="card-glow"></div>
           <div class="avatar-container mb-6">
-            <img src="/0007.jpg" alt="肖君枫的头像" class="avatar-image" />
+            <img src="/0007.jpg" :alt="t('profile.name')" class="avatar-image" />
           </div>
-          <h1 class="academic-title text-4xl mb-2">肖君枫</h1>
-          <h2 class="text-2xl mb-4 text-academic-secondary font-light">学术主页</h2>
+          <h1 class="academic-title text-4xl mb-2">{{ t('profile.name') }}</h1>
+          <h2 class="text-2xl mb-4 text-academic-secondary font-light">{{ t('profile.title') }}</h2>
           <!-- 社交媒体图标 -->
           <SocialIcons />
           <p class="mt-6 text-academic-secondary">
-            AI全栈开发工程师 / AI 产品经理 / Prompt 工程师 / 内容编辑
+            {{ t('profile.roles') }}
           </p>
         </div>
 
         <!-- 个人简介卡片 -->
         <div class="academic-card mb-8 hover:transform hover:scale-102 transition-all duration-300">
           <div class="card-glow"></div>
-          <h2 class="academic-title text-2xl mb-4 text-center">个人简介</h2>
+          <h2 class="academic-title text-2xl mb-4 text-center">{{ t('sections.about') }}</h2>
           <div class="text-academic-secondary space-y-4 text-justify leading-relaxed">
-            <p>
-              大家好！我是肖君枫，目前是一名AI全栈开发工程师和产品经理。我专注于人工智能领域，尤其是大语言模型的应用开发和系统架构设计。在过去的一年里，我参与了多个AI项目的全栈开发，包括教育科技和创意写作等领域。
-            </p>
-            <p>
-              我擅长全栈开发、产品设计、用户体验优化和AI系统的prompt工程，致力于将复杂的AI技术转化为直观、易用的产品。我对AI的热情源于其改变世界的潜力，特别是在教育和创意领域的应用。
-            </p>
-            <p>
-              在工作之余，我积极参与开源社区，乐于分享AI相关的技术见解和实践经验。我相信AI技术的发展应该以人为本，为社会创造真正的价值。
-            </p>
+            <p>{{ t('profile.greeting') }}</p>
+            <p>{{ t('profile.skills') }}</p>
+            <p>{{ t('profile.community') }}</p>
           </div>
         </div>
 
         <!-- 实习经历 -->
         <div class="academic-card hover:transform hover:scale-102 transition-all duration-300">
           <div class="card-glow"></div>
-          <h2 class="academic-title text-2xl mb-4 text-center">实习经历</h2>
+          <h2 class="academic-title text-2xl mb-4 text-center">{{ t('sections.experience') }}</h2>
           <ul class="space-y-6">
             <li class="experience-item">
               <div class="time-badge">2023年7月 - 2023年9月</div>
@@ -73,7 +75,7 @@
         <!-- 导航按钮 -->
         <div class="mt-8 text-center">
           <router-link to="/projects" class="inline-flex items-center px-6 py-3 bg-academic-accent text-white rounded-full hover:bg-academic-secondary transition-colors duration-300">
-            查看我的项目
+            {{ t('nav.projects') }}
             <svg class="w-5 h-5 ml-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
               <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 7l5 5m0 0l-5 5m5-5H6" />
             </svg>
@@ -85,8 +87,11 @@
 </template>
 
 <script setup lang="ts">
+import { useI18n } from 'vue-i18n'
 import NeuralNetwork from './NeuralNetwork.vue'
 import SocialIcons from './SocialIcons.vue'
+
+const { t, locale } = useI18n()
 </script>
 
 <style scoped>
