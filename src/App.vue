@@ -1,8 +1,12 @@
 <template>
-  <router-view></router-view>
+  <div class="app-container">
+    <LanguageSwitcher />
+    <router-view></router-view>
+  </div>
 </template>
 
 <script setup lang="ts">
+import LanguageSwitcher from './components/LanguageSwitcher.vue'
 </script>
 
 <style>
@@ -17,5 +21,9 @@
 }
 .logo.vue:hover {
   filter: drop-shadow(0 0 2em #42b883aa);
+}
+.app-container {
+  min-height: 100vh;
+  position: relative;
 }
 </style>
