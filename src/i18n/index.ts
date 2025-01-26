@@ -3,7 +3,8 @@ import { createI18n } from 'vue-i18n'
 const messages = {
   zh: {
     nav: {
-      projects: '查看我的项目'
+      projects: '查看我的项目',
+      back: '返回个人主页'
     },
     profile: {
       name: '肖君枫',
@@ -15,7 +16,31 @@ const messages = {
     },
     sections: {
       about: '个人简介',
-      experience: '实习经历'
+      experience: '实习经历',
+      projects: '开发项目',
+      contributions: '开源社区贡献'
+    },
+    projects: {
+      zero_haruhi: {
+        title: 'Zero-Haruhi',
+        subtitle: '【凉宫春日】',
+        repo: 'GitHub 仓库'
+      },
+      face_extract: {
+        title: 'smooth-face-extract',
+        description: '一个用于从视频中提取人脸的多功能工具，用作 SD 训练的辅助工具',
+        repo: 'GitHub 仓库'
+      }
+    },
+    contributions: {
+      huggingface: {
+        title: 'huggingface Hub Python Library',
+        role: '中文翻译贡献者',
+        pr: 'GitHub PR'
+      },
+      blog: {
+        title: 'Hugging Face 博客翻译系列'
+      }
     },
     experience: {
       metadigits: {
@@ -40,7 +65,8 @@ const messages = {
   },
   en: {
     nav: {
-      projects: 'View My Projects'
+      projects: 'View My Projects',
+      back: 'Back to Home'
     },
     profile: {
       name: 'Junfeng Xiao',
@@ -52,7 +78,31 @@ const messages = {
     },
     sections: {
       about: 'About Me',
-      experience: 'Experience'
+      experience: 'Experience',
+      projects: 'Development Projects',
+      contributions: 'Open Source Contributions'
+    },
+    projects: {
+      zero_haruhi: {
+        title: 'Zero-Haruhi',
+        subtitle: '[Haruhi Suzumiya]',
+        repo: 'GitHub Repository'
+      },
+      face_extract: {
+        title: 'smooth-face-extract',
+        description: 'A versatile tool for extracting faces from videos, used as an auxiliary tool for SD training',
+        repo: 'GitHub Repository'
+      }
+    },
+    contributions: {
+      huggingface: {
+        title: 'huggingface Hub Python Library',
+        role: 'Chinese Translation Contributor',
+        pr: 'GitHub PR'
+      },
+      blog: {
+        title: 'Hugging Face Blog Translation Series'
+      }
     },
     experience: {
       metadigits: {

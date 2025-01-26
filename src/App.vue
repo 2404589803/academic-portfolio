@@ -1,27 +1,19 @@
 <template>
-  <div class="app-container">
-    <LanguageSwitcher />
+  <Layout>
     <router-view></router-view>
-  </div>
+  </Layout>
 </template>
 
 <script setup lang="ts">
-import LanguageSwitcher from './components/LanguageSwitcher.vue'
+import Layout from './components/Layout.vue'
 </script>
 
 <style>
-.logo {
-  height: 6em;
-  padding: 1.5em;
-  will-change: filter;
-  transition: filter 300ms;
+:root {
+  --primary-color: #646cff;
+  --secondary-color: #42b883;
 }
-.logo:hover {
-  filter: drop-shadow(0 0 2em #646cffaa);
-}
-.logo.vue:hover {
-  filter: drop-shadow(0 0 2em #42b883aa);
-}
+
 .app-container {
   min-height: 100vh;
   position: relative;

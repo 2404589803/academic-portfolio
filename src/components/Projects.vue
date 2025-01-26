@@ -13,37 +13,37 @@
           <svg class="w-5 h-5 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M11 17l-5-5m0 0l5-5m-5 5h12" />
           </svg>
-          返回个人主页
+          {{ t('nav.back') }}
         </router-link>
       </div>
 
       <article class="prose prose-lg mx-auto">
         <!-- 开发项目 -->
         <div class="academic-card mb-8">
-          <h2 class="academic-title text-2xl mb-4 text-center">开发项目</h2>
+          <h2 class="academic-title text-2xl mb-4 text-center">{{ t('sections.projects') }}</h2>
           <ul class="space-y-4">
             <li class="project-item">
-              <strong class="text-academic-accent">Zero-Haruhi</strong>
-              <span class="text-academic-secondary">【凉宫春日】</span>
+              <strong class="text-academic-accent">{{ t('projects.zero_haruhi.title') }}</strong>
+              <span class="text-academic-secondary">{{ t('projects.zero_haruhi.subtitle') }}</span>
               <div class="mt-2">
                 <a href="https://github.com/LC1332/Zero-Haruhi" 
                    target="_blank" 
                    rel="noopener noreferrer"
                    class="ai-link">
-                  <span class="link-text">GitHub 仓库</span>
+                  <span class="link-text">{{ t('projects.zero_haruhi.repo') }}</span>
                   <span class="link-arrow">→</span>
                 </a>
               </div>
             </li>
             <li class="project-item">
-              <strong class="text-academic-accent">smooth-face-extract</strong>
-              <div class="text-sm text-academic-secondary mt-1">一个用于从视频中提取人脸的多功能工具，用作 SD 训练的辅助工具</div>
+              <strong class="text-academic-accent">{{ t('projects.face_extract.title') }}</strong>
+              <div class="text-sm text-academic-secondary mt-1">{{ t('projects.face_extract.description') }}</div>
               <div class="mt-2">
                 <a href="https://github.com/LC1332/smooth-face-extract" 
                    target="_blank" 
                    rel="noopener noreferrer"
                    class="ai-link">
-                  <span class="link-text">GitHub 仓库</span>
+                  <span class="link-text">{{ t('projects.face_extract.repo') }}</span>
                   <span class="link-arrow">→</span>
                 </a>
               </div>
@@ -53,20 +53,20 @@
 
         <!-- 开源社区贡献 -->
         <div class="academic-card">
-          <h2 class="academic-title text-2xl mb-4 text-center">开源社区贡献</h2>
+          <h2 class="academic-title text-2xl mb-4 text-center">{{ t('sections.contributions') }}</h2>
           <ul class="space-y-4">
             <li class="contribution-item">
               <div class="flex items-center">
                 <span class="text-academic-accent mr-2">🤗</span>
-                <strong class="text-academic-primary">huggingface Hub Python Library</strong>
+                <strong class="text-academic-primary">{{ t('contributions.huggingface.title') }}</strong>
               </div>
-              <div class="text-academic-secondary ml-6">中文翻译贡献者</div>
+              <div class="text-academic-secondary ml-6">{{ t('contributions.huggingface.role') }}</div>
               <div class="mt-2 ml-6">
                 <a href="https://github.com/huggingface/huggingface_hub/pull/1916" 
                    target="_blank" 
                    rel="noopener noreferrer"
                    class="ai-link">
-                  <span class="link-text">GitHub PR</span>
+                  <span class="link-text">{{ t('contributions.huggingface.pr') }}</span>
                   <span class="link-arrow">→</span>
                 </a>
               </div>
@@ -74,7 +74,7 @@
             <li class="contribution-item">
               <div class="flex items-center">
                 <span class="text-academic-accent mr-2">🤗</span>
-                <strong class="text-academic-primary">Hugging Face 博客翻译系列</strong>
+                <strong class="text-academic-primary">{{ t('contributions.blog.title') }}</strong>
               </div>
               <ul class="ml-6 mt-2 space-y-2 text-academic-secondary">
                 <li>The Llama Hitchhiking Guide to Local LLMs</li>
@@ -100,7 +100,10 @@
 </template>
 
 <script setup lang="ts">
+import { useI18n } from 'vue-i18n'
 import NeuralNetwork from './NeuralNetwork.vue'
+
+const { t } = useI18n()
 </script>
 
 <style scoped>

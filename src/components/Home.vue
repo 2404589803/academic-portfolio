@@ -1,15 +1,8 @@
 <template>
-  <div class="min-h-screen bg-white relative overflow-hidden">
+  <div class="relative overflow-hidden">
     <!-- Neural Network Background -->
     <NeuralNetwork />
     
-    <!-- AI Grid Background -->
-    <div class="absolute inset-0 bg-grid opacity-5"></div>
-    
-    <!-- Glowing Orbs -->
-    <div class="glow-orb-1"></div>
-    <div class="glow-orb-2"></div>
-
     <div class="page-container py-8 relative z-10">
       <article class="prose prose-lg mx-auto">
         <!-- 个人简介卡片 -->
