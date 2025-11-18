@@ -4,7 +4,18 @@
 
 @layer base {
   body {
-    @apply bg-academic-light text-academic-primary;
+    @apply bg-editor-bg text-editor-fg font-mono antialiased overflow-x-hidden;
+    background-image: radial-gradient(#333 1px, transparent 1px);
+    background-size: 20px 20px;
+  }
+
+  h1,
+  h2,
+  h3,
+  h4,
+  h5,
+  h6 {
+    @apply font-mono tracking-tight text-editor-keyword;
   }
 }
 
@@ -12,4 +23,38 @@
   .page-container {
     @apply max-w-7xl mx-auto px-4 sm:px-6 lg:px-8;
   }
+
+  .section-title {
+    @apply text-2xl md:text-3xl font-bold mb-8 text-editor-function flex items-center;
+  }
+
+  .section-title::before {
+    content: 'function ';
+    @apply text-editor-keyword mr-2 font-normal opacity-80;
+  }
+
+  .section-title::after {
+    content: '() {';
+    @apply text-editor-fg ml-1 font-normal;
+  }
+}
+
+/* Custom Scrollbar */
+::-webkit-scrollbar {
+  width: 10px;
+  background: #1e1e1e;
+}
+
+::-webkit-scrollbar-track {
+  background: #1e1e1e;
+}
+
+::-webkit-scrollbar-thumb {
+  background: #424242;
+  border: 2px solid #1e1e1e;
+  border-radius: 0;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: #4f4f4f;
 }

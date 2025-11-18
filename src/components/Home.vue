@@ -1,177 +1,305 @@
 <template>
-  <div class="relative overflow-hidden">
-    <!-- Neural Network Background -->
-    <NeuralNetwork />
-    
-    <div class="page-container py-8 relative z-10">
-      <article class="prose prose-lg mx-auto">
-        <!-- 个人简介卡片 -->
-        <div class="academic-card mb-8 hover:transform hover:scale-102 transition-all duration-300 text-center">
-          <div class="card-glow"></div>
-          <div class="avatar-container mb-6">
-            <img src="/0007.jpg" :alt="t('profile.name')" class="avatar-image" />
+  <div class="min-h-screen pt-16 pb-20">
+    <div class="page-container">
+      <!-- Hero Section: Split Pane IDE Style -->
+      <div class="mb-12 animate-fade-in-up">
+        <div class="bg-editor-bg border border-editor-line rounded-lg overflow-hidden shadow-2xl max-w-5xl mx-auto">
+          <!-- Window Title Bar -->
+          <div
+            class="bg-editor-sidebar px-4 py-3 flex items-center justify-between border-b border-editor-line select-none">
+            <div class="flex items-center space-x-2">
+              <div class="flex space-x-2 mr-4">
+                <div class="w-3 h-3 rounded-full bg-[#ff5f56] border border-[#e0443e]"></div>
+                <div class="w-3 h-3 rounded-full bg-[#ffbd2e] border border-[#dea123]"></div>
+                <div class="w-3 h-3 rounded-full bg-[#27c93f] border border-[#1aab29]"></div>
+              </div>
+              <div class="flex space-x-1 text-sm font-mono">
+                <span class="text-editor-fg opacity-60">~/academic-portfolio/</span>
+                <span class="text-editor-fg font-bold">profile.config.ts</span>
+              </div>
+            </div>
+            <div class="text-xs text-editor-fg opacity-40 font-mono">TypeScript</div>
           </div>
-          <h1 class="academic-title text-4xl mb-2">{{ t('profile.name') }}</h1>
-          <h2 class="text-2xl mb-4 text-academic-secondary font-light">{{ t('profile.title') }}</h2>
-          <!-- 社交媒体图标 -->
-          <SocialIcons />
-          <p class="mt-6 text-academic-secondary">
-            {{ t('profile.roles') }}
-          </p>
-        </div>
 
-        <!-- 个人简介卡片 -->
-        <div class="academic-card mb-8 hover:transform hover:scale-102 transition-all duration-300">
-          <div class="card-glow"></div>
-          <h2 class="academic-title text-2xl mb-4 text-center">{{ t('sections.about') }}</h2>
-          <div class="text-academic-secondary space-y-4 text-justify leading-relaxed">
-            <p>{{ t('profile.greeting') }}</p>
-            <p>{{ t('profile.skills') }}</p>
-            <p>{{ t('profile.community') }}</p>
+          <!-- Main Editor Area -->
+          <div class="flex flex-col md:flex-row">
+            <!-- Code Pane -->
+            <div class="flex-1 p-6 md:p-8 font-mono text-sm md:text-base overflow-x-auto bg-[#1e1e1e]">
+              <div class="flex">
+                <!-- Line Numbers -->
+                <div
+                  class="text-editor-line select-none pr-4 text-right border-r border-editor-line mr-4 opacity-50 font-mono text-xs md:text-sm leading-relaxed">
+                  <div v-for="n in 18" :key="n">{{ n }}</div>
+                </div>
+                <!-- Code -->
+                <div class="w-full leading-relaxed">
+                  <div><span class="text-editor-keyword">export const</span> <span
+                      class="text-editor-function">developer</span> <span class="text-editor-fg">=</span> <span
+                      class="text-editor-fg">{</span></div>
+                  <div class="pl-4">
+                    <span class="text-editor-fg">name:</span> <span class="text-editor-string">"{{ t('profile.name')
+                    }}"</span><span class="text-editor-fg">,</span>
+                  </div>
+                  <div class="pl-4">
+                    <span class="text-editor-fg">title:</span> <span class="text-editor-string">"{{ t('profile.title')
+                    }}"</span><span class="text-editor-fg">,</span>
+                  </div>
+                  <div class="pl-4">
+                    <span class="text-editor-fg">roles:</span> <span class="text-editor-fg">[</span>
+                  </div>
+                  <div class="pl-8">
+                    <span class="text-editor-string">"AI Researcher"</span><span class="text-editor-fg">,</span>
+                  </div>
+                  <div class="pl-8">
+                    <span class="text-editor-string">"Full Stack Developer"</span><span class="text-editor-fg">,</span>
+                  </div>
+                  <div class="pl-8">
+                    <span class="text-editor-string">"Open Source Contributor"</span>
+                  </div>
+                  <div class="pl-4">
+                    <span class="text-editor-fg">],</span>
+                  </div>
+                  <div class="pl-4">
+                    <span class="text-editor-fg">status:</span> <span class="text-editor-string">"Coding..."</span><span
+                      class="text-editor-fg">,</span>
+                  </div>
+                  <div class="pl-4">
+                    <span class="text-editor-fg">skills:</span> <span class="text-editor-fg">{</span>
+                  </div>
+                  <div class="pl-8">
+                    <span class="text-editor-fg">languages:</span> <span class="text-editor-fg">[</span><span
+                      class="text-editor-string">"Python"</span><span class="text-editor-fg">,</span> <span
+                      class="text-editor-string">"TypeScript"</span><span class="text-editor-fg">,</span> <span
+                      class="text-editor-string">"C++"</span><span class="text-editor-fg">],</span>
+                  </div>
+                  <div class="pl-8">
+                    <span class="text-editor-fg">frameworks:</span> <span class="text-editor-fg">[</span><span
+                      class="text-editor-string">"PyTorch"</span><span class="text-editor-fg">,</span> <span
+                      class="text-editor-string">"Vue.js"</span><span class="text-editor-fg">,</span> <span
+                      class="text-editor-string">"Tailwind"</span><span class="text-editor-fg">]</span>
+                  </div>
+                  <div class="pl-4">
+                    <span class="text-editor-fg">}</span>
+                  </div>
+                  <div><span class="text-editor-fg">};</span></div>
+                  <div class="mt-2">
+                    <span class="text-editor-comment">// <span class="animate-pulse">_</span></span>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <!-- Preview/Avatar Pane (Right Side) -->
+            <div
+              class="w-full md:w-80 bg-editor-sidebar border-l border-editor-line p-6 flex flex-col items-center justify-center relative overflow-hidden">
+              <!-- Background decoration -->
+              <div
+                class="absolute inset-0 opacity-10 bg-[radial-gradient(#4ec9b0_1px,transparent_1px)] [background-size:16px_16px]">
+              </div>
+
+              <div class="relative z-10 text-center">
+                <div class="relative inline-block mb-6 group">
+                  <div
+                    class="absolute -inset-0.5 bg-gradient-to-r from-blue-500 to-purple-600 rounded-full blur opacity-50 group-hover:opacity-100 transition duration-500">
+                  </div>
+                  <img src="/0007.jpg" :alt="t('profile.name')"
+                    class="relative w-40 h-40 rounded-full border-4 border-editor-bg object-cover shadow-xl" />
+                  <!-- Online Status Indicator -->
+                  <div
+                    class="absolute bottom-2 right-2 w-5 h-5 bg-green-500 border-4 border-editor-sidebar rounded-full">
+                  </div>
+                </div>
+
+                <h2 class="text-xl font-bold text-editor-fg mb-1">{{ t('profile.name') }}</h2>
+                <p class="text-sm text-editor-keyword font-mono mb-4">@rose北港</p>
+
+                <SocialIcons />
+              </div>
+            </div>
           </div>
         </div>
+      </div>
 
-        <!-- 实习经历 -->
-        <div class="academic-card hover:transform hover:scale-102 transition-all duration-300">
-          <div class="card-glow"></div>
-          <h2 class="academic-title text-2xl mb-4 text-center">{{ t('sections.experience') }}</h2>
-          <ul class="space-y-6">
-            <li class="experience-item">
-              <div class="time-badge">{{ t('experience.metadigits.time') }}</div>
-              <div class="company-name">{{ t('experience.metadigits.company') }}</div>
-              <div class="project-name">{{ t('experience.metadigits.project') }}</div>
-              <div class="role">{{ t('experience.metadigits.role') }}</div>
-            </li>
-            <li class="experience-item">
-              <div class="time-badge">{{ t('experience.imaginix.time') }}</div>
-              <div class="company-name">{{ t('experience.imaginix.company') }}</div>
-              <div class="location">📍 {{ t('experience.imaginix.location') }}</div>
-              <div class="project-name">{{ t('experience.imaginix.project') }}</div>
-              <div class="role">{{ t('experience.imaginix.role') }}</div>
-            </li>
-            <li class="experience-item">
-              <div class="time-badge">{{ t('experience.zhipu.time') }}</div>
-              <div class="company-name">{{ t('experience.zhipu.company') }}</div>
-              <div class="role">{{ t('experience.zhipu.role') }}</div>
-            </li>
-          </ul>
+      <!-- Contribution Graph Section -->
+      <div class="mb-16 max-w-5xl mx-auto">
+        <div class="bg-editor-bg border border-editor-line rounded-lg p-4 shadow-lg">
+          <div class="flex items-center justify-between mb-3">
+            <h3 class="text-sm font-mono text-editor-fg">Contribution Activity</h3>
+            <div class="text-xs text-editor-comment font-mono">1,234 contributions in the last year</div>
+          </div>
+          <div class="flex justify-center overflow-x-auto pb-2">
+            <div class="flex gap-[3px]">
+              <div v-for="week in 52" :key="week" class="flex flex-col gap-[3px]">
+                <div v-for="day in 7" :key="day"
+                  class="w-3 h-3 rounded-[2px] transition-all duration-300 hover:scale-125"
+                  :class="getContributionClass()" :title="`Contribution level`"></div>
+              </div>
+            </div>
+          </div>
+          <div class="flex items-center justify-end gap-2 mt-2 text-xs text-editor-fg font-mono opacity-60">
+            <span>Less</span>
+            <div class="w-3 h-3 rounded-[2px] bg-[#2d2d2d]"></div>
+            <div class="w-3 h-3 rounded-[2px] bg-[#0e4429]"></div>
+            <div class="w-3 h-3 rounded-[2px] bg-[#006d32]"></div>
+            <div class="w-3 h-3 rounded-[2px] bg-[#26a641]"></div>
+            <div class="w-3 h-3 rounded-[2px] bg-[#39d353]"></div>
+            <span>More</span>
+          </div>
         </div>
+      </div>
 
-        <!-- 导航按钮 -->
-        <div class="mt-8 text-center">
-          <router-link to="/projects" class="inline-flex items-center px-6 py-3 bg-academic-accent text-white rounded-full hover:bg-academic-secondary transition-colors duration-300">
-            {{ t('nav.projects') }}
-            <svg class="w-5 h-5 ml-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 7l5 5m0 0l-5 5m5-5H6" />
-            </svg>
-          </router-link>
+      <!-- Terminal Section: Experience & About -->
+      <div class="max-w-5xl mx-auto">
+        <div class="bg-[#1e1e1e] rounded-lg border border-editor-line shadow-xl overflow-hidden">
+          <!-- Terminal Tabs -->
+          <div class="flex bg-editor-sidebar border-b border-editor-line text-sm font-mono">
+            <button @click="activeTab = 'terminal'"
+              :class="['px-4 py-2 border-r border-editor-line flex items-center', activeTab === 'terminal' ? 'bg-[#1e1e1e] text-editor-fg' : 'text-gray-500 hover:bg-[#2a2a2a]']">
+              <span class="mr-2">$_</span> terminal
+            </button>
+            <button @click="activeTab = 'output'"
+              :class="['px-4 py-2 border-r border-editor-line flex items-center', activeTab === 'output' ? 'bg-[#1e1e1e] text-editor-fg' : 'text-gray-500 hover:bg-[#2a2a2a]']">
+              <span class="mr-2">ℹ</span> output
+            </button>
+          </div>
+
+          <!-- Terminal Content -->
+          <div class="p-6 font-mono text-sm md:text-base h-[400px] overflow-y-auto custom-scrollbar">
+            <div v-if="activeTab === 'terminal'">
+              <!-- Command 1: whoami -->
+              <div class="mb-6">
+                <div class="flex items-center text-editor-fg mb-2">
+                  <span class="text-green-500 mr-2">➜</span>
+                  <span class="text-blue-400 mr-2">~</span>
+                  <span class="text-editor-fg">whoami</span>
+                </div>
+                <div class="text-editor-fg opacity-80 pl-4 border-l-2 border-editor-line">
+                  {{ t('profile.greeting') }}
+                </div>
+              </div>
+
+              <!-- Command 2: cat experience.log -->
+              <div class="mb-6">
+                <div class="flex items-center text-editor-fg mb-2">
+                  <span class="text-green-500 mr-2">➜</span>
+                  <span class="text-blue-400 mr-2">~</span>
+                  <span class="text-editor-fg">cat ./experience.log</span>
+                </div>
+                <div class="pl-4 border-l-2 border-editor-line space-y-4">
+                  <div class="group">
+                    <div class="text-editor-keyword font-bold">[{{ t('experience.metadigits.time') }}]</div>
+                    <div class="text-editor-function">{{ t('experience.metadigits.company') }}</div>
+                    <div class="text-editor-fg opacity-80">> {{ t('experience.metadigits.role') }}</div>
+                  </div>
+                  <div class="group">
+                    <div class="text-editor-keyword font-bold">[{{ t('experience.imaginix.time') }}]</div>
+                    <div class="text-editor-function">{{ t('experience.imaginix.company') }}</div>
+                    <div class="text-editor-fg opacity-80">> {{ t('experience.imaginix.role') }}</div>
+                  </div>
+                  <div class="group">
+                    <div class="text-editor-keyword font-bold">[{{ t('experience.zhipu.time') }}]</div>
+                    <div class="text-editor-function">{{ t('experience.zhipu.company') }}</div>
+                    <div class="text-editor-fg opacity-80">> {{ t('experience.zhipu.role') }}</div>
+                  </div>
+                </div>
+              </div>
+
+              <!-- Command 3: ls projects -->
+              <div>
+                <div class="flex items-center text-editor-fg mb-2">
+                  <span class="text-green-500 mr-2">➜</span>
+                  <span class="text-blue-400 mr-2">~</span>
+                  <span class="text-editor-fg">ls -la ./projects</span>
+                </div>
+                <div class="pl-4 grid grid-cols-1 md:grid-cols-2 gap-4">
+                  <router-link to="/projects"
+                    class="block p-3 border border-editor-line rounded hover:border-editor-keyword hover:bg-editor-active transition-all group">
+                    <div class="flex items-center justify-between mb-1">
+                      <span class="text-editor-function font-bold">{{ t('projects.zero_haruhi.title') }}</span>
+                      <span class="text-xs text-editor-comment">Public</span>
+                    </div>
+                    <div class="text-xs text-editor-fg opacity-60 group-hover:opacity-100">
+                      {{ t('projects.zero_haruhi.subtitle') }}
+                    </div>
+                  </router-link>
+                  <router-link to="/projects"
+                    class="block p-3 border border-editor-line rounded hover:border-editor-keyword hover:bg-editor-active transition-all group">
+                    <div class="flex items-center justify-between mb-1">
+                      <span class="text-editor-function font-bold">{{ t('projects.face_extract.title') }}</span>
+                      <span class="text-xs text-editor-comment">Public</span>
+                    </div>
+                    <div class="text-xs text-editor-fg opacity-60 group-hover:opacity-100">
+                      {{ t('projects.face_extract.description') }}
+                    </div>
+                  </router-link>
+                </div>
+                <!-- Cursor -->
+                <div class="mt-4 flex items-center">
+                  <span class="text-green-500 mr-2">➜</span>
+                  <span class="text-blue-400 mr-2">~</span>
+                  <span class="animate-pulse w-2 h-4 bg-editor-fg block"></span>
+                </div>
+              </div>
+            </div>
+
+            <div v-else-if="activeTab === 'output'">
+              <div class="text-editor-comment">
+                // System Build Output<br>
+                // -------------------
+              </div>
+              <div class="mt-2 space-y-1">
+                <div class="text-editor-fg"><span class="text-green-500">✔</span> Loaded profile configuration</div>
+                <div class="text-editor-fg"><span class="text-green-500">✔</span> Connected to GitHub API</div>
+                <div class="text-editor-fg"><span class="text-green-500">✔</span> Fetched 3 featured projects</div>
+                <div class="text-editor-fg"><span class="text-green-500">✔</span> Initialized neural network background
+                </div>
+                <div class="text-editor-fg"><span class="text-yellow-500">⚠</span> Coffee level low (30%)</div>
+                <div class="text-editor-fg mt-4">
+                  <span class="text-blue-400">info</span> Ready to code.
+                </div>
+              </div>
+            </div>
+          </div>
         </div>
-      </article>
+      </div>
     </div>
   </div>
 </template>
 
 <script setup lang="ts">
+import { ref } from 'vue'
 import { useI18n } from 'vue-i18n'
-import NeuralNetwork from './NeuralNetwork.vue'
 import SocialIcons from './SocialIcons.vue'
 
-const { t, locale } = useI18n()
+const { t } = useI18n()
+const activeTab = ref('terminal')
+
+// Simulate GitHub contribution graph colors
+const getContributionClass = () => {
+  const rand = Math.random()
+  if (rand > 0.9) return 'bg-[#39d353]' // High
+  if (rand > 0.7) return 'bg-[#26a641]' // Medium
+  if (rand > 0.5) return 'bg-[#006d32]' // Low
+  if (rand > 0.3) return 'bg-[#0e4429]' // Very Low
+  return 'bg-[#2d2d2d]' // None
+}
 </script>
 
 <style scoped>
-.prose {
-  max-width: 100ch;
+.custom-scrollbar::-webkit-scrollbar {
+  width: 8px;
 }
 
-/* 背景网格 */
-.bg-grid {
-  background-image: 
-    linear-gradient(rgba(0, 0, 0, 0.05) 1px, transparent 1px),
-    linear-gradient(90deg, rgba(0, 0, 0, 0.05) 1px, transparent 1px);
-  background-size: 30px 30px;
+.custom-scrollbar::-webkit-scrollbar-track {
+  background: #1e1e1e;
 }
 
-/* 发光球体 */
-.glow-orb-1, .glow-orb-2 {
-  @apply absolute rounded-full blur-3xl opacity-10;
-  background: radial-gradient(circle, rgba(0, 102, 204, 0.3) 0%, rgba(0, 102, 204, 0) 70%);
+.custom-scrollbar::-webkit-scrollbar-thumb {
+  background: #333;
+  border-radius: 4px;
 }
 
-.glow-orb-1 {
-  @apply top-20 -left-20;
-  width: 400px;
-  height: 400px;
+.custom-scrollbar::-webkit-scrollbar-thumb:hover {
+  background: #444;
 }
-
-.glow-orb-2 {
-  @apply bottom-20 -right-20;
-  width: 300px;
-  height: 300px;
-}
-
-/* 卡片样式 */
-.academic-card {
-  @apply relative p-6 rounded-2xl bg-white border border-gray-100;
-  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.05);
-}
-
-.card-glow {
-  @apply absolute inset-0 opacity-0 transition-opacity duration-300 rounded-2xl;
-  background: radial-gradient(circle at var(--mouse-x, 50%) var(--mouse-y, 50%), 
-              rgba(0, 102, 204, 0.08) 0%, 
-              transparent 60%);
-}
-
-.academic-card:hover .card-glow {
-  opacity: 1;
-}
-
-/* 时间标签 */
-.time-badge {
-  @apply inline-block px-3 py-1 rounded-full text-sm font-medium bg-academic-paper text-academic-secondary mb-2;
-  border: 1px solid rgba(0, 0, 0, 0.1);
-}
-
-/* 公司名称 */
-.company-name {
-  @apply text-lg font-semibold text-academic-primary mb-1;
-}
-
-/* 项目名称 */
-.project-name {
-  @apply text-academic-secondary mb-1;
-}
-
-/* 角色 */
-.role {
-  @apply text-academic-accent italic;
-}
-
-/* 位置标签 */
-.location {
-  @apply text-sm text-academic-secondary mb-1;
-}
-
-/* 经验项样式 */
-.experience-item {
-  @apply p-4 rounded-lg bg-academic-paper transition-all duration-300;
-  border: 1px solid rgba(0, 0, 0, 0.1);
-}
-
-.experience-item:hover {
-  @apply transform scale-[1.02] shadow-lg;
-}
-
-/* 头像样式 */
-.avatar-container {
-  @apply mx-auto relative;
-  width: 180px;
-  height: 180px;
-}
-
-.avatar-image {
-  @apply w-full h-full object-cover rounded-full shadow-lg;
-  border: 3px solid rgba(255, 255, 255, 0.8);
-}
-</style> 
+</style>

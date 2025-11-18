@@ -9,53 +9,48 @@ export default {
   theme: {
     extend: {
       colors: {
-        'academic': {
-          'primary': '#000000',    // 黑色文字
-          'secondary': '#86868b',   // 苹果风格的次要灰色
-          'accent': '#0066CC',      // 苹果风格的蓝色
-          'light': '#ffffff',      // 白色背景
-          'paper': '#f5f5f7',      // 苹果风格的浅灰色背景
+        'editor': {
+          'bg': '#1e1e1e',         // VS Code Dark+ Background
+          'fg': '#d4d4d4',         // Default Foreground
+          'sidebar': '#252526',    // Sidebar Background
+          'active': '#37373d',     // Active Line/Selection
+          'line': '#2d2d2d',       // Line Number/Border
+          'comment': '#6a9955',    // Comment Green
+          'keyword': '#569cd6',    // Keyword Blue
+          'string': '#ce9178',     // String Orange
+          'function': '#dcdcaa',   // Function Yellow
+          'number': '#b5cea8',     // Number Light Green
+          'type': '#4ec9b0',       // Type Teal
         }
       },
       fontFamily: {
-        'serif': ['-apple-system', 'SF Pro Display', 'system-ui', 'sans-serif'],
-        'sans': ['-apple-system', 'SF Pro Text', 'system-ui', 'sans-serif'],
-        'mono': ['SF Mono', 'monospace'],
+        'mono': ['"JetBrains Mono"', '"Fira Code"', 'Consolas', 'Monaco', 'monospace'],
+        'sans': ['"Inter"', 'system-ui', 'sans-serif'],
       },
-      typography: {
-        DEFAULT: {
-          css: {
-            maxWidth: '65ch',
-            color: '#2C3E50',
-            lineHeight: '1.75',
-          }
+      animation: {
+        'cursor-blink': 'cursorBlink 1s step-end infinite',
+      },
+      keyframes: {
+        cursorBlink: {
+          '0%, 100%': { opacity: '1' },
+          '50%': { opacity: '0' },
         }
       }
     },
   },
   plugins: [
     typography,
-    function({ addUtilities }) {
+    function ({ addUtilities }) {
       addUtilities({
-        '.glass-effect': {
-          'background': 'rgba(255, 255, 255, 0.8)',
-          'backdrop-filter': 'blur(20px)',
-          '-webkit-backdrop-filter': 'blur(20px)',
-          'border': '1px solid rgba(255, 255, 255, 0.3)'
+        '.code-line': {
+          'font-family': '"JetBrains Mono", "Fira Code", monospace',
+          'line-height': '1.6',
         },
-        '.academic-card': {
-          'background': '#ffffff',
-          'border': '1px solid #e5e5e5',
-          'border-radius': '1rem',
-          'box-shadow': '0 2px 8px rgba(0, 0, 0, 0.05)',
-          'padding': '1.5rem',
-          'transition': 'all 0.3s ease'
-        },
-        '.academic-title': {
-          'font-family': '-apple-system, SF Pro Display, system-ui, sans-serif',
-          'font-weight': '600',
-          'color': '#000000',
-          'line-height': '1.2'
+        '.line-number': {
+          'color': '#858585',
+          'text-align': 'right',
+          'padding-right': '1.5rem',
+          'user-select': 'none',
         }
       })
     }
