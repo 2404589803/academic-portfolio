@@ -1,12 +1,42 @@
+/* Light Mode (Default) - Inspired by VS Code Light */
+:root {
+  --editor-bg: #ffffff;
+  --editor-fg: #333333;
+  --editor-sidebar: #f3f3f3;
+  --editor-active: #e4e6f1;
+  --editor-line: #e5e5e5;
+  --editor-comment: #008000;
+  --editor-keyword: #0000ff;
+  --editor-string: #a31515;
+  --editor-function: #795e26;
+  --editor-number: #098658;
+  --editor-type: #267f99;
+}
+
+/* Dark Mode - Inspired by VS Code Dark+ */
+.dark {
+  --editor-bg: #1e1e1e;
+  --editor-fg: #d4d4d4;
+  --editor-sidebar: #252526;
+  --editor-active: #37373d;
+  --editor-line: #2d2d2d;
+  --editor-comment: #6a9955;
+  --editor-keyword: #569cd6;
+  --editor-string: #ce9178;
+  --editor-function: #dcdcaa;
+  --editor-number: #b5cea8;
+  --editor-type: #4ec9b0;
+}
+
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
 
 @layer base {
   body {
-    @apply bg-editor-bg text-editor-fg font-mono antialiased overflow-x-hidden;
-    background-image: radial-gradient(#333 1px, transparent 1px);
-    background-size: 20px 20px;
+    @apply bg-editor-bg text-editor-fg font-mono transition-colors duration-300;
+    background-image: radial-gradient(var(--editor-line) 1px, transparent 1px);
+    background-size: 24px 24px;
   }
 
   h1,
@@ -15,7 +45,7 @@
   h4,
   h5,
   h6 {
-    @apply font-mono tracking-tight text-editor-keyword;
+    @apply font-mono text-editor-keyword;
   }
 }
 

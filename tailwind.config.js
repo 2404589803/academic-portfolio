@@ -10,17 +10,17 @@ export default {
     extend: {
       colors: {
         'editor': {
-          'bg': '#1e1e1e',         // VS Code Dark+ Background
-          'fg': '#d4d4d4',         // Default Foreground
-          'sidebar': '#252526',    // Sidebar Background
-          'active': '#37373d',     // Active Line/Selection
-          'line': '#2d2d2d',       // Line Number/Border
-          'comment': '#6a9955',    // Comment Green
-          'keyword': '#569cd6',    // Keyword Blue
-          'string': '#ce9178',     // String Orange
-          'function': '#dcdcaa',   // Function Yellow
-          'number': '#b5cea8',     // Number Light Green
-          'type': '#4ec9b0',       // Type Teal
+          'bg': 'var(--editor-bg)',
+          'fg': 'var(--editor-fg)',
+          'sidebar': 'var(--editor-sidebar)',
+          'active': 'var(--editor-active)',
+          'line': 'var(--editor-line)',
+          'comment': 'var(--editor-comment)',
+          'keyword': 'var(--editor-keyword)',
+          'string': 'var(--editor-string)',
+          'function': 'var(--editor-function)',
+          'number': 'var(--editor-number)',
+          'type': 'var(--editor-type)',
         }
       },
       fontFamily: {

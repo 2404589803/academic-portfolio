@@ -34,7 +34,7 @@
         class="social-icon-link group">
         <div class="icon-wrapper">
           <img src="https://github.githubassets.com/images/modules/logos_page/GitHub-Mark.png" alt="GitHub" width="20"
-            height="20" class="invert opacity-80 group-hover:opacity-100" />
+            height="20" class="dark:invert opacity-80 group-hover:opacity-100" />
         </div>
       </a>
 

@@ -9,11 +9,13 @@
           <div class="w-3 h-3 rounded-full bg-yellow-500 group-hover:bg-yellow-600 transition-colors"></div>
           <div class="w-3 h-3 rounded-full bg-green-500 group-hover:bg-green-600 transition-colors"></div>
         </div>
-        <div class="text-sm text-editor-fg opacity-60 hidden sm:block">academic-portfolio — -bash — 80x24</div>
+        <div class="text-sm text-editor-fg opacity-60 hidden sm:block">{{ t('profile.name') }} — {{ t('profile.title')
+          }} — -bash</div>
       </div>
 
       <div class="flex items-center">
         <LanguageSwitcher />
+        <ThemeSwitcher />
       </div>
     </header>
 
@@ -54,7 +56,17 @@
 </template>
 
 <script setup lang="ts">
+import { watchEffect } from 'vue'
+import { useI18n } from 'vue-i18n'
 import LanguageSwitcher from './LanguageSwitcher.vue'
+import ThemeSwitcher from './ThemeSwitcher.vue'
+
+const { t } = useI18n()
+
+// Update document title when locale changes
+watchEffect(() => {
+  document.title = `${t('profile.name')} - ${t('profile.title')}`
+})
 </script>
 
 <style scoped>

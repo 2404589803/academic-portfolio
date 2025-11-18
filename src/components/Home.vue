@@ -24,7 +24,7 @@
           <!-- Main Editor Area -->
           <div class="flex flex-col md:flex-row">
             <!-- Code Pane -->
-            <div class="flex-1 p-6 md:p-8 font-mono text-sm md:text-base overflow-x-auto bg-[#1e1e1e]">
+            <div class="flex-1 p-6 md:p-8 font-mono text-sm md:text-base overflow-x-auto bg-editor-bg">
               <div class="flex">
                 <!-- Line Numbers -->
                 <div
@@ -138,7 +138,7 @@
           </div>
           <div class="flex items-center justify-end gap-2 mt-2 text-xs text-editor-fg font-mono opacity-60">
             <span>Less</span>
-            <div class="w-3 h-3 rounded-[2px] bg-[#2d2d2d]"></div>
+            <div class="w-3 h-3 rounded-[2px] bg-editor-line"></div>
             <div class="w-3 h-3 rounded-[2px] bg-[#0e4429]"></div>
             <div class="w-3 h-3 rounded-[2px] bg-[#006d32]"></div>
             <div class="w-3 h-3 rounded-[2px] bg-[#26a641]"></div>
@@ -150,15 +150,15 @@
 
       <!-- Terminal Section: Experience & About -->
       <div class="max-w-5xl mx-auto">
-        <div class="bg-[#1e1e1e] rounded-lg border border-editor-line shadow-xl overflow-hidden">
+        <div class="bg-editor-bg rounded-lg border border-editor-line shadow-xl overflow-hidden">
           <!-- Terminal Tabs -->
           <div class="flex bg-editor-sidebar border-b border-editor-line text-sm font-mono">
             <button @click="activeTab = 'terminal'"
-              :class="['px-4 py-2 border-r border-editor-line flex items-center', activeTab === 'terminal' ? 'bg-[#1e1e1e] text-editor-fg' : 'text-gray-500 hover:bg-[#2a2a2a]']">
+              :class="['px-4 py-2 border-r border-editor-line flex items-center', activeTab === 'terminal' ? 'bg-editor-bg text-editor-fg' : 'text-gray-500 hover:bg-editor-active']">
               <span class="mr-2">$_</span> terminal
             </button>
             <button @click="activeTab = 'output'"
-              :class="['px-4 py-2 border-r border-editor-line flex items-center', activeTab === 'output' ? 'bg-[#1e1e1e] text-editor-fg' : 'text-gray-500 hover:bg-[#2a2a2a]']">
+              :class="['px-4 py-2 border-r border-editor-line flex items-center', activeTab === 'output' ? 'bg-editor-bg text-editor-fg' : 'text-gray-500 hover:bg-editor-active']">
               <span class="mr-2">ℹ</span> output
             </button>
           </div>
@@ -281,7 +281,7 @@ const getContributionClass = () => {
   if (rand > 0.7) return 'bg-[#26a641]' // Medium
   if (rand > 0.5) return 'bg-[#006d32]' // Low
   if (rand > 0.3) return 'bg-[#0e4429]' // Very Low
-  return 'bg-[#2d2d2d]' // None
+  return 'bg-editor-line' // None
 }
 </script>
 
@@ -291,15 +291,15 @@ const getContributionClass = () => {
 }
 
 .custom-scrollbar::-webkit-scrollbar-track {
-  background: #1e1e1e;
+  background: var(--editor-bg);
 }
 
 .custom-scrollbar::-webkit-scrollbar-thumb {
-  background: #333;
+  background: var(--editor-line);
   border-radius: 4px;
 }
 
 .custom-scrollbar::-webkit-scrollbar-thumb:hover {
-  background: #444;
+  background: var(--editor-active);
 }
 </style>
