@@ -11,6 +11,8 @@
   --editor-function: #795e26;
   --editor-number: #098658;
   --editor-type: #267f99;
+  --editor-scrollbar-thumb: #c1c1c1;
+  --editor-scrollbar-track: #ffffff;
 }
 
 /* Dark Mode - Inspired by VS Code Dark+ */
@@ -26,6 +28,8 @@
   --editor-function: #dcdcaa;
   --editor-number: #b5cea8;
   --editor-type: #4ec9b0;
+  --editor-scrollbar-thumb: #424242;
+  --editor-scrollbar-track: #1e1e1e;
 }
 
 @tailwind base;
@@ -72,19 +76,19 @@
 /* Custom Scrollbar */
 ::-webkit-scrollbar {
   width: 10px;
-  background: #1e1e1e;
+  background: var(--editor-scrollbar-track);
 }
 
 ::-webkit-scrollbar-track {
-  background: #1e1e1e;
+  background: var(--editor-scrollbar-track);
 }
 
 ::-webkit-scrollbar-thumb {
-  background: #424242;
-  border: 2px solid #1e1e1e;
+  background: var(--editor-scrollbar-thumb);
+  border: 2px solid var(--editor-scrollbar-track);
   border-radius: 0;
 }
 
 ::-webkit-scrollbar-thumb:hover {
-  background: #4f4f4f;
+  background: var(--editor-active);
 }
