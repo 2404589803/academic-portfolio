@@ -1,29 +1,23 @@
 <template>
   <div class="page-container">
     <section class="page-intro">
-      <div class="eyebrow">{{ t('projects.eyebrow') }}</div>
+      <div class="eyebrow">{{ t('sections.projects') }}</div>
       <h1>{{ t('sections.projects') }}</h1>
-      <p>{{ t('projects.intro') }}</p>
+      <p>{{ t('profile.community') }}</p>
       <router-link to="/" class="back-link">← {{ t('nav.back') }}</router-link>
     </section>
 
     <section class="section">
       <div class="section-heading">
-        <h2>{{ t('projects.selected') }}</h2>
-        <span>2023—{{ new Date().getFullYear() }}</span>
+        <h2>{{ t('sections.projects') }}</h2>
+        <span>{{ t('projectsCount') }}</span>
       </div>
-      <div class="project-grid">
-        <article class="project-card">
-          <div class="eyebrow">01 · OPEN SOURCE</div>
-          <h3>{{ t('projects.zero_haruhi.title') }}</h3>
-          <p>{{ t('projects.zero_haruhi.description') }}</p>
-          <a href="https://github.com/LC1332/Zero-Haruhi" target="_blank" rel="noopener noreferrer">{{ t('projects.viewRepo') }} ↗</a>
-        </article>
-        <article class="project-card">
-          <div class="eyebrow">02 · COMPUTER VISION</div>
-          <h3>{{ t('projects.face_extract.title') }}</h3>
-          <p>{{ t('projects.face_extract.description') }}</p>
-          <a href="https://github.com/LC1332/smooth-face-extract" target="_blank" rel="noopener noreferrer">{{ t('projects.viewRepo') }} ↗</a>
+      <div class="project-grid project-grid-wide">
+        <article v-for="index in projectIndexes" :key="index" class="project-card project-card-detailed">
+          <div class="eyebrow">{{ String(index + 1).padStart(2, '0') }}</div>
+          <h3>{{ t('resume.projects.' + index + '.title') }}</h3>
+          <div class="project-meta">{{ t('resume.projects.' + index + '.meta') }}</div>
+          <p>{{ t('resume.projects.' + index + '.description') }}</p>
         </article>
       </div>
     </section>
@@ -31,22 +25,14 @@
     <section class="section">
       <div class="section-heading">
         <h2>{{ t('sections.contributions') }}</h2>
-        <span>{{ t('projects.communityNote') }}</span>
+        <span>{{ t('sections.contributionsNote') }}</span>
       </div>
       <div class="contribution-list">
-        <article class="contribution-item">
+        <article v-for="index in contributionIndexes" :key="index" class="contribution-item">
           <div>
-            <strong>{{ t('contributions.huggingface.title') }}</strong>
-            <div class="timeline-role">{{ t('contributions.huggingface.role') }}</div>
+            <strong>{{ t('resume.contributions.' + index + '.title') }}</strong>
+            <div class="timeline-role">{{ t('resume.contributions.' + index + '.description') }}</div>
           </div>
-          <a class="back-link" href="https://github.com/huggingface/huggingface_hub/pull/1916" target="_blank" rel="noopener noreferrer">PR #1916 ↗</a>
-        </article>
-        <article class="contribution-item">
-          <div>
-            <strong>{{ t('contributions.blog.title') }}</strong>
-            <div class="timeline-role">{{ t('contributions.blog.items') }}</div>
-          </div>
-          <a class="back-link" href="https://github.com/huggingface-cn/hf-blog-translation/pull/140" target="_blank" rel="noopener noreferrer">{{ t('projects.viewRepo') }} ↗</a>
         </article>
       </div>
     </section>
@@ -57,5 +43,7 @@
 import { useI18n } from 'vue-i18n'
 
 const { t } = useI18n()
+const projectIndexes = Array.from({ length: 17 }, (_, index) => index)
+const contributionIndexes = [0, 1, 2, 3, 4]
 </script>
 

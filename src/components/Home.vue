@@ -9,7 +9,10 @@
           <div class="profile-meta">
             <div>{{ t('profile.affiliation') }}</div>
             <div>{{ t('profile.location') }}</div>
+            <div>{{ t('profile.phone') }}</div>
             <div>{{ t('profile.email') }}</div>
+            <div>{{ t('profile.wechat') }}</div>
+            <a :href="'https://' + t('profile.github')" target="_blank" rel="noopener noreferrer">{{ t('profile.github') }}</a>
           </div>
         </div>
       </aside>
@@ -20,7 +23,6 @@
         <p class="lead">{{ t('profile.greeting') }}</p>
         <div class="hero-actions">
           <router-link to="/projects" class="button-primary">{{ t('nav.projects') }}</router-link>
-          <a href="https://github.com/LC1332" target="_blank" rel="noopener noreferrer" class="button-secondary">{{ t('profile.contact') }} ↗</a>
         </div>
       </div>
     </section>
@@ -31,10 +33,10 @@
         <span>{{ t('sections.interestsNote') }}</span>
       </div>
       <div class="interest-grid">
-        <article v-for="(interest, index) in interests" :key="interest.title" class="interest-card">
+        <article v-for="(interest, index) in interestIndexes" :key="interest" class="interest-card">
           <div class="interest-index">0{{ index + 1 }}</div>
-          <h3>{{ t(interest.title) }}</h3>
-          <p>{{ t(interest.description) }}</p>
+          <h3>{{ t('interests.' + interest + '.title') }}</h3>
+          <p>{{ t('interests.' + interest + '.description') }}</p>
         </article>
       </div>
     </section>
@@ -45,11 +47,14 @@
         <span>{{ t('sections.experienceNote') }}</span>
       </div>
       <div class="timeline">
-        <article v-for="item in experience" :key="item.company" class="timeline-item">
-          <div class="timeline-date">{{ t(item.time) }}</div>
+        <article v-for="index in experienceIndexes" :key="index" class="timeline-item timeline-item-detailed">
+          <div class="timeline-date">{{ t('resume.experience.' + index + '.period') }}</div>
           <div>
-            <h3 class="timeline-company">{{ t(item.company) }}</h3>
-            <div class="timeline-role">{{ t(item.role) }}</div>
+            <h3 class="timeline-company">{{ t('resume.experience.' + index + '.company') }}</h3>
+            <div class="timeline-role">{{ t('resume.experience.' + index + '.role') }} · {{ t('resume.experience.' + index + '.location') }}</div>
+            <ul class="detail-list">
+              <li v-for="bullet in experienceBulletCounts[index]" :key="bullet">{{ t('resume.experience.' + index + '.bullets.' + bullet) }}</li>
+            </ul>
           </div>
         </article>
       </div>
@@ -61,16 +66,38 @@
         <router-link to="/projects" class="back-link">{{ t('nav.projects') }} →</router-link>
       </div>
       <div class="project-grid">
-        <article class="project-card">
-          <h3>{{ t('projects.zero_haruhi.title') }}</h3>
-          <p>{{ t('projects.zero_haruhi.description') }}</p>
-          <a href="https://github.com/LC1332/Zero-Haruhi" target="_blank" rel="noopener noreferrer">{{ t('projects.viewRepo') }} ↗</a>
+        <article v-for="index in featuredProjectIndexes" :key="index" class="project-card">
+          <div class="eyebrow">0{{ index + 1 }}</div>
+          <h3>{{ t('resume.projects.' + index + '.title') }}</h3>
+          <div class="project-meta">{{ t('resume.projects.' + index + '.meta') }}</div>
+          <p>{{ t('resume.projects.' + index + '.description') }}</p>
         </article>
-        <article class="project-card">
-          <h3>{{ t('projects.face_extract.title') }}</h3>
-          <p>{{ t('projects.face_extract.description') }}</p>
-          <a href="https://github.com/LC1332/smooth-face-extract" target="_blank" rel="noopener noreferrer">{{ t('projects.viewRepo') }} ↗</a>
-        </article>
+      </div>
+    </section>
+
+    <section class="section split-section">
+      <div>
+        <div class="section-heading">
+          <h2>{{ t('sections.education') }}</h2>
+        </div>
+        <div class="education-row">
+          <div>
+            <h3>{{ t('resume.education.school') }}</h3>
+            <div class="timeline-role">{{ t('resume.education.degree') }}</div>
+          </div>
+          <div class="timeline-date">{{ t('resume.education.period') }}<br>{{ t('resume.education.location') }}</div>
+        </div>
+      </div>
+      <div>
+        <div class="section-heading">
+          <h2>{{ t('sections.skills') }}</h2>
+        </div>
+        <div class="skills-list">
+          <div v-for="index in skillIndexes" :key="index" class="skill-row">
+            <strong>{{ t('resume.skills.' + index + '.label') }}</strong>
+            <span>{{ t('resume.skills.' + index + '.value') }}</span>
+          </div>
+        </div>
       </div>
     </section>
 
@@ -79,7 +106,12 @@
         <h2>{{ t('sections.contributions') }}</h2>
         <span>{{ t('sections.contributionsNote') }}</span>
       </div>
-      <p class="quote">{{ t('profile.community') }}</p>
+      <div class="contribution-list">
+        <article v-for="index in contributionIndexes" :key="index" class="contribution-item">
+          <strong>{{ t('resume.contributions.' + index + '.title') }}</strong>
+          <span>{{ t('resume.contributions.' + index + '.description') }}</span>
+        </article>
+      </div>
     </section>
   </div>
 </template>
@@ -88,17 +120,11 @@
 import { useI18n } from 'vue-i18n'
 
 const { t } = useI18n()
-
-const interests = [
-  { title: 'interests.llm.title', description: 'interests.llm.description' },
-  { title: 'interests.product.title', description: 'interests.product.description' },
-  { title: 'interests.openSource.title', description: 'interests.openSource.description' },
-]
-
-const experience = [
-  { time: 'experience.zhipu.time', company: 'experience.zhipu.company', role: 'experience.zhipu.role' },
-  { time: 'experience.imaginix.time', company: 'experience.imaginix.company', role: 'experience.imaginix.role' },
-  { time: 'experience.metadigits.time', company: 'experience.metadigits.company', role: 'experience.metadigits.role' },
-]
+const interestIndexes = ['evaluation', 'agents', 'products']
+const experienceIndexes = [0, 1, 2, 3]
+const experienceBulletCounts = [5, 4, 2, 2]
+const featuredProjectIndexes = [0, 1, 2, 3]
+const skillIndexes = [0, 1, 2, 3, 4]
+const contributionIndexes = [0, 1, 2, 3, 4]
 </script>
 
