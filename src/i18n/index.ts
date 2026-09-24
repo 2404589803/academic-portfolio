@@ -20,8 +20,8 @@ const messages = {
       roles: 'AI 产品经理 · Prompt 工程师 · 内容编辑',
       affiliation: '独立研究与产品实践',
       location: '中国',
-      email: 'junfeng.xiao@example.com',
-      contact: '联系我',
+      email: 'GitHub · LC1332',
+      contact: '查看 GitHub',
       greeting: '我关注大语言模型的应用、AI 产品设计与知识传播，尝试把复杂的技术转化为可理解、可使用、可持续迭代的工具。这里记录我的项目、工作经历与开源贡献。',
       community: '我相信好的 AI 实践既需要技术判断，也需要对使用者、语言和社会情境保持敏感。通过产品工作、内容编辑和开源协作，我持续探索技术如何形成真实的公共价值。'
     },
@@ -111,8 +111,8 @@ const messages = {
       roles: 'AI Product Manager · Prompt Engineer · Content Editor',
       affiliation: 'Independent research and product practice',
       location: 'China',
-      email: 'junfeng.xiao@example.com',
-      contact: 'Get in touch',
+      email: 'GitHub · LC1332',
+      contact: 'View GitHub',
       greeting: 'I work across large language model applications, AI product design, and knowledge sharing. My practice turns complex technology into tools that people can understand, use, and improve. This archive brings together selected projects, experience, and open-source contributions.',
       community: 'Good AI practice needs technical judgment and care for users, language, and social context. Through product work, editorial practice, and open-source collaboration, I explore how technology can create public value.'
     },

@@ -20,7 +20,7 @@
         <p class="lead">{{ t('profile.greeting') }}</p>
         <div class="hero-actions">
           <router-link to="/projects" class="button-primary">{{ t('nav.projects') }}</router-link>
-          <a href="mailto:junfeng.xiao@example.com" class="button-secondary">{{ t('profile.contact') }}</a>
+          <a href="https://github.com/LC1332" target="_blank" rel="noopener noreferrer" class="button-secondary">{{ t('profile.contact') }} ↗</a>
         </div>
       </div>
     </section>
