@@ -48,12 +48,12 @@
       </div>
       <div class="timeline">
         <article v-for="index in experienceIndexes" :key="index" class="timeline-item timeline-item-detailed">
-          <div class="timeline-date">{{ t('resume.experience.' + index + '.period') }}</div>
+          <div class="timeline-date">{{ t('experience.' + index + '.period') }}</div>
           <div>
-            <h3 class="timeline-company">{{ t('resume.experience.' + index + '.company') }}</h3>
-            <div class="timeline-role">{{ t('resume.experience.' + index + '.role') }} · {{ t('resume.experience.' + index + '.location') }}</div>
+            <h3 class="timeline-company">{{ t('experience.' + index + '.company') }}</h3>
+            <div class="timeline-role">{{ t('experience.' + index + '.role') }} · {{ t('experience.' + index + '.location') }}</div>
             <ul class="detail-list">
-              <li v-for="bullet in experienceBulletCounts[index]" :key="bullet">{{ t('resume.experience.' + index + '.bullets.' + bullet) }}</li>
+              <li v-for="bullet in experienceBulletCounts[index]" :key="bullet">{{ t('experience.' + index + '.bullets.' + (bullet - 1)) }}</li>
             </ul>
           </div>
         </article>
@@ -68,9 +68,9 @@
       <div class="project-grid">
         <article v-for="index in featuredProjectIndexes" :key="index" class="project-card">
           <div class="eyebrow">0{{ index + 1 }}</div>
-          <h3>{{ t('resume.projects.' + index + '.title') }}</h3>
-          <div class="project-meta">{{ t('resume.projects.' + index + '.meta') }}</div>
-          <p>{{ t('resume.projects.' + index + '.description') }}</p>
+          <h3>{{ t('projects.' + index + '.title') }}</h3>
+          <div class="project-meta">{{ t('projects.' + index + '.meta') }}</div>
+          <p>{{ t('projects.' + index + '.description') }}</p>
         </article>
       </div>
     </section>
@@ -82,10 +82,10 @@
         </div>
         <div class="education-row">
           <div>
-            <h3>{{ t('resume.education.school') }}</h3>
-            <div class="timeline-role">{{ t('resume.education.degree') }}</div>
+            <h3>{{ t('education.school') }}</h3>
+            <div class="timeline-role">{{ t('education.degree') }}</div>
           </div>
-          <div class="timeline-date">{{ t('resume.education.period') }}<br>{{ t('resume.education.location') }}</div>
+          <div class="timeline-date">{{ t('education.period') }}<br>{{ t('education.location') }}</div>
         </div>
       </div>
       <div>
@@ -94,8 +94,8 @@
         </div>
         <div class="skills-list">
           <div v-for="index in skillIndexes" :key="index" class="skill-row">
-            <strong>{{ t('resume.skills.' + index + '.label') }}</strong>
-            <span>{{ t('resume.skills.' + index + '.value') }}</span>
+            <strong>{{ t('skills.' + index + '.label') }}</strong>
+            <span>{{ t('skills.' + index + '.value') }}</span>
           </div>
         </div>
       </div>
@@ -108,8 +108,8 @@
       </div>
       <div class="contribution-list">
         <article v-for="index in contributionIndexes" :key="index" class="contribution-item">
-          <strong>{{ t('resume.contributions.' + index + '.title') }}</strong>
-          <span>{{ t('resume.contributions.' + index + '.description') }}</span>
+          <strong>{{ t('contributions.' + index + '.title') }}</strong>
+          <span>{{ t('contributions.' + index + '.description') }}</span>
         </article>
       </div>
     </section>

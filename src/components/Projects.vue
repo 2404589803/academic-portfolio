@@ -15,9 +15,9 @@
       <div class="project-grid project-grid-wide">
         <article v-for="index in projectIndexes" :key="index" class="project-card project-card-detailed">
           <div class="eyebrow">{{ String(index + 1).padStart(2, '0') }}</div>
-          <h3>{{ t('resume.projects.' + index + '.title') }}</h3>
-          <div class="project-meta">{{ t('resume.projects.' + index + '.meta') }}</div>
-          <p>{{ t('resume.projects.' + index + '.description') }}</p>
+          <h3>{{ t('projects.' + index + '.title') }}</h3>
+          <div class="project-meta">{{ t('projects.' + index + '.meta') }}</div>
+          <p>{{ t('projects.' + index + '.description') }}</p>
         </article>
       </div>
     </section>
@@ -30,8 +30,8 @@
       <div class="contribution-list">
         <article v-for="index in contributionIndexes" :key="index" class="contribution-item">
           <div>
-            <strong>{{ t('resume.contributions.' + index + '.title') }}</strong>
-            <div class="timeline-role">{{ t('resume.contributions.' + index + '.description') }}</div>
+            <strong>{{ t('contributions.' + index + '.title') }}</strong>
+            <div class="timeline-role">{{ t('contributions.' + index + '.description') }}</div>
           </div>
         </article>
       </div>
