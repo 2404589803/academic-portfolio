@@ -1,94 +1,136 @@
-/* Light Mode (Default) - Inspired by VS Code Light */
-:root {
-  --editor-bg: #ffffff;
-  --editor-fg: #333333;
-  --editor-sidebar: #f3f3f3;
-  --editor-active: #e4e6f1;
-  --editor-line: #e5e5e5;
-  --editor-comment: #008000;
-  --editor-keyword: #0000ff;
-  --editor-string: #a31515;
-  --editor-function: #795e26;
-  --editor-number: #098658;
-  --editor-type: #267f99;
-  --editor-scrollbar-thumb: #c1c1c1;
-  --editor-scrollbar-track: #ffffff;
-}
-
-/* Dark Mode - Inspired by VS Code Dark+ */
-.dark {
-  --editor-bg: #1e1e1e;
-  --editor-fg: #d4d4d4;
-  --editor-sidebar: #252526;
-  --editor-active: #37373d;
-  --editor-line: #2d2d2d;
-  --editor-comment: #6a9955;
-  --editor-keyword: #569cd6;
-  --editor-string: #ce9178;
-  --editor-function: #dcdcaa;
-  --editor-number: #b5cea8;
-  --editor-type: #4ec9b0;
-  --editor-scrollbar-thumb: #424242;
-  --editor-scrollbar-track: #1e1e1e;
-}
-
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
 
-@layer base {
-  body {
-    @apply bg-editor-bg text-editor-fg font-mono transition-colors duration-300;
-    background-image: radial-gradient(var(--editor-line) 1px, transparent 1px);
-    background-size: 24px 24px;
-  }
+:root {
+  --paper: #f7f8fa;
+  --surface: #ffffff;
+  --ink: #182536;
+  --muted: #637083;
+  --line: #dce2e9;
+  --accent: #9b3f2f;
+  --accent-soft: #f5eae7;
+  --navy: #20344f;
+  --shadow: 0 16px 42px rgba(32, 52, 79, 0.08);
+}
 
-  h1,
-  h2,
-  h3,
-  h4,
-  h5,
-  h6 {
-    @apply font-mono text-editor-keyword;
+.dark {
+  --paper: #121a25;
+  --surface: #192535;
+  --ink: #edf1f6;
+  --muted: #a8b5c5;
+  --line: #304158;
+  --accent: #e69a82;
+  --accent-soft: #3a292b;
+  --navy: #c7d6e8;
+  --shadow: 0 16px 42px rgba(0, 0, 0, 0.22);
+}
+
+@layer base {
+  html { scroll-behavior: smooth; }
+  body {
+    margin: 0;
+    background: var(--paper);
+    color: var(--ink);
+    font-family: Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+    font-size: 16px;
+    line-height: 1.65;
+    transition: background-color .25s ease, color .25s ease;
   }
+  h1, h2, h3, h4 {
+    margin: 0;
+    color: var(--navy);
+    font-family: Georgia, "Noto Serif SC", "Songti SC", serif;
+    font-weight: 600;
+    letter-spacing: -0.02em;
+  }
+  a { color: inherit; }
+  ::selection { background: var(--accent); color: #fff; }
 }
 
 @layer components {
-  .page-container {
-    @apply max-w-7xl mx-auto px-4 sm:px-6 lg:px-8;
+  .site-shell { min-height: 100vh; display: flex; flex-direction: column; }
+  .site-header {
+    position: sticky; top: 0; z-index: 20;
+    border-bottom: 1px solid var(--line);
+    background: color-mix(in srgb, var(--paper) 92%, transparent);
+    backdrop-filter: blur(14px);
   }
-
-  .section-title {
-    @apply text-2xl md:text-3xl font-bold mb-8 text-editor-function flex items-center;
-  }
-
-  .section-title::before {
-    content: 'function ';
-    @apply text-editor-keyword mr-2 font-normal opacity-80;
-  }
-
-  .section-title::after {
-    content: '() {';
-    @apply text-editor-fg ml-1 font-normal;
-  }
+  .header-inner, .page-container { width: min(1120px, calc(100% - 40px)); margin: 0 auto; }
+  .header-inner { min-height: 76px; display: flex; align-items: center; justify-content: space-between; gap: 24px; }
+  .brand { display: flex; align-items: center; gap: 12px; text-decoration: none; }
+  .brand-mark { width: 34px; height: 34px; display: grid; place-items: center; border: 1px solid var(--navy); color: var(--navy); font-family: Georgia, serif; font-size: 19px; }
+  .brand-name { font-family: Georgia, "Noto Serif SC", serif; font-size: 18px; font-weight: 600; color: var(--navy); }
+  .brand-caption { display: block; color: var(--muted); font-size: 11px; letter-spacing: .16em; text-transform: uppercase; line-height: 1.2; }
+  .site-nav { display: flex; align-items: center; gap: 22px; font-size: 14px; color: var(--muted); }
+  .site-nav a { text-decoration: none; transition: color .2s ease; }
+  .site-nav a:hover, .site-nav a.router-link-active { color: var(--accent); }
+  .header-actions { display: flex; align-items: center; gap: 10px; }
+  .header-actions :deep(button), .header-actions :deep(.lang-btn) { color: var(--muted); }
+  .page-main { flex: 1; padding: 58px 0 90px; }
+  .eyebrow { color: var(--accent); font-size: 12px; font-weight: 700; letter-spacing: .18em; text-transform: uppercase; }
+  .hero-grid { display: grid; grid-template-columns: 300px 1fr; gap: 76px; align-items: start; }
+  .profile-aside { padding-top: 10px; }
+  .portrait { width: 156px; height: 190px; object-fit: cover; object-position: center; border: 1px solid var(--line); filter: saturate(.78); box-shadow: var(--shadow); }
+  .profile-name { margin-top: 20px; font-size: 27px; }
+  .profile-role { margin-top: 7px; color: var(--accent); font-size: 14px; line-height: 1.55; }
+  .profile-meta { margin-top: 22px; padding-top: 16px; border-top: 1px solid var(--line); color: var(--muted); font-size: 13px; }
+  .profile-meta div + div { margin-top: 6px; }
+  .hero-copy h1 { max-width: 760px; font-size: clamp(38px, 5vw, 64px); line-height: 1.08; }
+  .hero-copy .lead { max-width: 690px; margin-top: 22px; color: var(--muted); font-size: 18px; line-height: 1.8; }
+  .hero-actions { display: flex; flex-wrap: wrap; gap: 12px; margin-top: 30px; }
+  .button-primary, .button-secondary { display: inline-flex; align-items: center; justify-content: center; min-height: 42px; padding: 0 18px; border: 1px solid var(--accent); font-size: 14px; text-decoration: none; transition: all .2s ease; }
+  .button-primary { background: var(--accent); color: #fff; }
+  .button-primary:hover { background: var(--navy); border-color: var(--navy); }
+  .button-secondary { color: var(--accent); background: transparent; }
+  .button-secondary:hover { background: var(--accent-soft); }
+  .section { margin-top: 78px; }
+  .section-heading { display: flex; align-items: baseline; justify-content: space-between; gap: 20px; padding-bottom: 14px; border-bottom: 1px solid var(--line); }
+  .section-heading h2 { font-size: 28px; }
+  .section-heading span { color: var(--muted); font-size: 13px; }
+  .interest-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 18px; margin-top: 24px; }
+  .interest-card { padding: 22px; border: 1px solid var(--line); background: var(--surface); box-shadow: var(--shadow); }
+  .interest-index { color: var(--accent); font-family: Georgia, serif; font-size: 14px; }
+  .interest-card h3 { margin-top: 26px; font-size: 20px; }
+  .interest-card p { margin-top: 9px; color: var(--muted); font-size: 14px; }
+  .timeline { margin-top: 24px; border-left: 1px solid var(--line); }
+  .timeline-item { position: relative; display: grid; grid-template-columns: 170px 1fr; gap: 28px; padding: 0 0 30px 28px; }
+  .timeline-item::before { content: ''; position: absolute; width: 9px; height: 9px; border: 2px solid var(--accent); background: var(--paper); border-radius: 50%; left: -5px; top: 7px; }
+  .timeline-date { color: var(--accent); font-size: 13px; }
+  .timeline-company { font-size: 19px; }
+  .timeline-role { margin-top: 4px; color: var(--muted); font-size: 14px; }
+  .project-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 18px; margin-top: 24px; }
+  .project-card { display: flex; flex-direction: column; padding: 24px; border: 1px solid var(--line); background: var(--surface); min-height: 190px; box-shadow: var(--shadow); }
+  .project-card h3 { font-size: 22px; }
+  .project-card p { margin-top: 10px; color: var(--muted); font-size: 14px; }
+  .project-card a { margin-top: auto; padding-top: 20px; color: var(--accent); font-size: 14px; text-decoration: none; }
+  .project-card a:hover { text-decoration: underline; }
+  .quote { margin-top: 24px; padding: 22px 26px; border-left: 3px solid var(--accent); background: var(--accent-soft); color: var(--navy); font-family: Georgia, "Noto Serif SC", serif; font-size: 19px; }
+  .footer { padding: 22px 0 30px; border-top: 1px solid var(--line); color: var(--muted); font-size: 12px; }
+  .footer-inner { width: min(1120px, calc(100% - 40px)); margin: 0 auto; display: flex; justify-content: space-between; gap: 16px; }
+  .page-intro { max-width: 750px; }
+  .page-intro h1 { margin-top: 12px; font-size: clamp(38px, 5vw, 58px); }
+  .page-intro p { margin-top: 18px; color: var(--muted); font-size: 17px; }
+  .back-link { display: inline-flex; margin-top: 20px; color: var(--accent); font-size: 14px; text-decoration: none; }
+  .contribution-list { margin-top: 24px; display: grid; gap: 0; border-top: 1px solid var(--line); }
+  .contribution-item { display: grid; grid-template-columns: 1fr auto; gap: 18px; padding: 17px 0; border-bottom: 1px solid var(--line); }
+  .contribution-item strong { color: var(--navy); font-family: Georgia, serif; font-size: 18px; font-weight: 600; }
+  .contribution-item span { color: var(--muted); font-size: 14px; text-align: right; }
 }
 
-/* Custom Scrollbar */
-::-webkit-scrollbar {
-  width: 10px;
-  background: var(--editor-scrollbar-track);
+@media (max-width: 800px) {
+  .header-inner, .page-container, .footer-inner { width: min(100% - 28px, 640px); }
+  .header-inner { min-height: 68px; flex-wrap: wrap; padding: 12px 0; }
+  .site-nav { order: 3; width: 100%; justify-content: flex-start; gap: 16px; }
+  .hero-grid { grid-template-columns: 1fr; gap: 34px; }
+  .profile-aside { display: grid; grid-template-columns: 120px 1fr; column-gap: 18px; align-items: start; }
+  .portrait { width: 120px; height: 148px; grid-row: span 3; }
+  .profile-name { margin-top: 0; }
+  .profile-meta { margin-top: 14px; }
+  .interest-grid, .project-grid { grid-template-columns: 1fr; }
+  .timeline-item { grid-template-columns: 1fr; gap: 3px; }
+  .contribution-item { grid-template-columns: 1fr; gap: 4px; }
+  .contribution-item span { text-align: left; }
+  .footer-inner { flex-direction: column; }
 }
 
-::-webkit-scrollbar-track {
-  background: var(--editor-scrollbar-track);
-}
-
-::-webkit-scrollbar-thumb {
-  background: var(--editor-scrollbar-thumb);
-  border: 2px solid var(--editor-scrollbar-track);
-  border-radius: 0;
-}
-
-::-webkit-scrollbar-thumb:hover {
-  background: var(--editor-active);
-}
